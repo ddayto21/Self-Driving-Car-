@@ -1,15 +1,28 @@
-# OpenCV Python - Find Lanes for Self-Driving Cars - Computer Vision Tutorial
-https://www.youtube.com/watch?v=eLTLtUVuuy4
+# Repository Overview 
+This repository contains Python code for self-driving cars that use computer vision and deep learning techniques to address problems that autonomous vehicles face, such as detecting lane lines and predicting steering angles in real-time.
 
-# Step 1: Download Anaconda
+## Prerequisites
 
-# Download Road Image
+### OpenCV
+[Users/danieldayto/Coding/cars/Self-Driving-Car/screenshots/opencv.png]
+OpenCV stands for “Open Source Computer Vision” is a library for computer vision and machine learning software library. OpenCV has C++, Python, Java and MATLAB interfaces and supports Windows, Linux, Android, and Mac OS. 
+
+
+
+
+## Use OpenCV to Load Image 
+In order to perform  READ IMAGE AS AN ARRAY OF PIXELS
+# STEP 2: DETECT EDGES IN THE IMAGE 
+# STEP 3: USE LANE EDGES TO DEFINE REGION OF INTEREST #
+# STEP 4: ISOLATE REGION OF INTEREST IN THE IMAGE
+# STEP 5: USE HOUGH TRANSFORM TO FIND LANE LINES 
+# STEP 6: OPTIMIZE LANE LINES 
+
+## Download Road Image
 https://github.com/rslim087a/road-image
 
-# Install OpenCV Libary in Terminal:
+## Install OpenCV Libary in Terminal:
 $ pip install opencv-contrib-python
 
-# Install TensorFlow
-https://developer.apple.com/metal/tensorflow-plugin/
 
 
