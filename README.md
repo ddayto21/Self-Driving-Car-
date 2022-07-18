@@ -4,7 +4,7 @@ This repository contains Python code for self-driving cars that use computer vis
 ## Prerequisites
 
 ### OpenCV
-![OpenCV] (screenshots/opencv.png)
+![OpenCV](screenshots/opencv.png)
 OpenCV stands for “Open Source Computer Vision” is a library for computer vision and machine learning software library. OpenCV has C++, Python, Java and MATLAB interfaces and supports Windows, Linux, Android, and Mac OS. 
 
 
