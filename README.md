@@ -74,10 +74,54 @@ cv2.fillPoly(mask, np.int32([vertices]), 255)
 The white and black regions are represented by pixel values of 1 and 0, respectively.
 
 
+## Hough Transformation
+```python
+detected_lines = cv2.HoughLinesP(cropped_image, 2, np.pi/180, 100, np.array([]), minLineLength=40, maxLineGap=5)
+```
+
+### Make Coordinates
+```python
+def make_coordinates(image, line_parameters):
+    slope, intercept = line_parameters
+    y1 = image.shape[0]
+    y2 = int(y1 * (3/5))    
+    x1 = int((y1 - intercept) / slope) # The function: [x = (y-b) / x] is derived from the function: [y = mx+b]
+    x2 = int((y2 - intercept)/ slope)
+    return np.array([x1, y1, x2, y2])
+```
+
+### Average Slope Intercept
+```python
+def average_slope_intercept(image, lines):
+    left_fit = [] 
+    right_fit = [] 
+    for line in lines:
+        x1, y1, x2, y2 = line.reshape(4)
+        parameters = np.polyfit((x1, x2), (y1,y2), 1)
+        slope = parameters[0]
+        intercept = parameters[1]
+        if slope < 0: 
+            left_fit.append((slope, intercept))
+        else:
+            right_fit.append((slope, intercept))
+    left_fit_avg = np.average(left_fit, axis=0)
+    right_fit_avg = np.average(right_fit, axis=0)    
+    left_line = make_coordinates(image, left_fit_avg)
+    right_line = make_coordinates(image, right_fit_avg)
+    return np.array([left_line, right_line])
+```
 
 
 
+## Use Mask to Display Lane Lines
+```python
+def display_lines(image, lines):
+    line_image = np.zeros_like(image)
+    if lines is not None:
+        for line in lines:
+            x1, y1, x2, y2 = line.reshape(4)
+            cv2.line(line_image, (x1, y1), (x2, y2), (255,0,0), 10)
+    return line_image
+```
 
-
-
-
+![Detected-Lines](screenshots/Combo-Image.jpg)
